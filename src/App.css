@@ -454,7 +454,7 @@ main {
 @media (max-width: 768px) {
   .games {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    margin: 20px 30px;
+    margin: 0 30px 30px;
   }
 }
 
@@ -992,6 +992,9 @@ button:hover {
   background-color: #e8f5e9; /* Light green background */
   text-align: center;
   color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .welcome-message h2 {
@@ -1001,7 +1004,6 @@ button:hover {
 
 .welcome-message a,
 .logout {
-  display: inline-block; /* Make both behave like buttons */
   margin-top: 10px; /* Space above the elements */
   padding: 10px 15px; /* Consistent padding for both */
   border-radius: 5px; /* Rounded corners */
@@ -1014,7 +1016,6 @@ button:hover {
 /* Link Styles */
 .welcome-message a {
   background-color: #4caf50;
-  margin: 0;
 }
 
 .welcome-message a:hover {
@@ -1023,8 +1024,6 @@ button:hover {
 
 /* Logout Button Styles */
 .logout {
-  margin-left: 10em;
-  margin-right: 10em;
   background-color: #f44336; /* Red background for logout */
   border: none; /* No border */
   cursor: pointer; /* Pointer cursor on hover */
