@@ -1,0 +1,1012 @@
+body {
+  margin: 0;
+  background-color: #1a1a2e;
+  display: flex;
+  flex-direction: column;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+main {
+  flex: 1; /* Allow main to grow and take up available space */
+  margin-top: 120px;
+  display: flex;
+  justify-content: center;
+  min-height: calc(100vh - 90px);
+}
+
+/* NavBar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(25, 25, 30, 0.9);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  height: 60px;
+  z-index: 1000;
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  color: #e0c68c; /* Light Gold */
+  font-size: 30px;
+  cursor: pointer;
+  display: none; /* Hide by default */
+  margin-left: auto;
+}
+
+.logo {
+  color: rgb(255, 183, 100); /* Accent Color */
+  text-shadow: 1px 1px 2px black, 0 0 25px white, 0 0 5px darkviolet;
+  margin: 0;
+  font-size: 50px;
+  text-decoration: none;
+  margin-right: auto;
+  font-family: "MyFont";
+}
+
+@font-face {
+  font-family: "MyFont";
+  src: url(./Photos/Doto_Rounded-ExtraBold.ttf);
+}
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a,
+.dropdown {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  padding: 10px 9px;
+  transition: background-color 0.3s, color 0.3s; /* Transition for hover effects */
+  font-size: 20px;
+}
+
+.nav-links a:hover,
+.dropdown:hover {
+  background-color: #f3d250;
+  color: #1c1c1c;
+  cursor: pointer;
+}
+
+.nav-links a:hover .arrow,
+.dropdown:hover .arrow {
+  border-color: #1c1c1c; /* Change arrow color on hover */
+}
+
+.arrow {
+  border: ridge rgb(255, 255, 255);
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 4px;
+  margin-bottom: 2px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+/* Dropdown Menu Styles */
+.dropdown {
+  position: relative; /* Position relative for dropdown positioning */
+}
+
+.dropdown-menu {
+  display: none; /* Hidden by default */
+  flex-direction: column; /* Stack dropdown links vertically */
+  position: absolute; /* Position it below the Games link */
+  background: rgba(25, 25, 30, 0.9); /* Dark Slate */
+  border-radius: 4px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  z-index: 1000; /* Ensure it appears above other elements */
+  top: 47px; /* Space between Games link and dropdown */
+  left: 0;
+  max-width: 120px;
+  opacity: 0;
+  visibility: hidden; /* Hide by default */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth appearance */
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+  display: flex; /* Show dropdown menu */
+  opacity: 1;
+  visibility: visible; /* Ensure it's visible */
+  text-align: center;
+}
+
+.dropdown-menu a {
+  padding: 10px; /* Padding for dropdown links */
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 15.4px;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f3d250;
+  color: #1c1c1c;
+}
+
+/* Side Bar */
+.nav-links.open {
+  display: flex; /* Show links when sidebar is open */
+  flex-direction: column; /* Stack vertically */
+  position: absolute;
+  top: 90px;
+  left: 0;
+  width: 100vw;
+  background-color: rgba(25, 25, 30, 0.9);
+  z-index: 999;
+}
+
+.dropdown-menu-side {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* Hide links on mobile */
+    padding: 5px 0;
+  }
+
+  .toggle-button {
+    display: block; /* Show toggle button on mobile */
+  }
+
+  .logo {
+    font-size: 40px; /* Smaller logo on mobile */
+  }
+
+  .nav-links a {
+    font-size: 18px; /* Smaller link text */
+    padding: 10px 22px;
+    text-align: center;
+  }
+}
+
+/* Footer */
+.footer {
+  background-color: rgba(25, 25, 30);
+  color: white;
+  font-weight: bolder;
+  font-size: larger;
+  text-align: center;
+  padding: 25px 0;
+}
+
+.social-icons {
+  margin-bottom: 15px;
+}
+
+.social-icons a {
+  color: white;
+  margin: 0 15px;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #f3d250;
+}
+
+/* Home Page Slider */
+.slider-container {
+  margin-top: -30px;
+  position: relative;
+  max-width: 100%;
+}
+
+.slider-item {
+  position: relative;
+  text-align: center;
+  height: 65vh;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.slider-item a {
+  outline: none; /*remove underline of image link */
+}
+
+.slider-item img {
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+/* Screen resizing */
+
+@media (max-width: 800px) {
+  .slider-item {
+    height: 55vh; /* Decrease height */
+    width: 70%; /* Decrease width */
+  }
+}
+
+@media (max-width: 600px) {
+  .slider-item {
+    height: 35vh; /* Further decrease height */
+    width: 60%; /* Further decrease width */
+  }
+}
+
+@media (max-width: 400px) {
+  .slider-item {
+    height: 25vh; /* Final decrease for small screens */
+    width: 40%; /* Final decrease for small screens */
+  }
+}
+
+/* Arrow */
+
+.custom-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  z-index: 1; /* Ensure it’s above the images */
+  opacity: 0.3;
+  transition: opacity 0.3s;
+}
+
+.next-arrow {
+  margin-right: 35px;
+}
+
+.prev-arrow {
+  margin-left: 35px;
+}
+
+.custom-arrow:hover {
+  opacity: 1;
+}
+
+.slick-dots li button:before {
+  color: rgb(255, 255, 255) !important;
+}
+
+.slick-dots li.slick-active button:before {
+  color: rgb(255, 255, 255) !important;
+}
+
+/* Latest News */
+
+.latest-news {
+  margin-top: 2em;
+  margin-left: 5em;
+  color: rgb(255, 255, 255);
+  font-size: larger;
+}
+
+@media (max-width: 768px) {
+  .latest-news {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+  }
+}
+
+.news-container {
+  margin-top: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0 3vw;
+}
+
+.news-item {
+  /* height: 40vh;
+  width: 20vw;
+  background-color: #1c1c1c;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  object-fit: contain;
+  transition: transform 0.2s, box-shadow 0.2s;
+  min-width: 300px;
+  min-height: 450px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #1c1c1c;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2;
+  margin-bottom: 20px;
+  width: 23em;
+}
+
+.news-item:hover {
+  transform: scale(1.04);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.news-item img {
+  width: 100%;
+  height: 13em;
+}
+
+.news-content {
+  padding: 1em;
+  color: #fff;
+}
+
+.news-content h3 {
+  min-height: 2.5em;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.news-content h6 {
+  font-size: 1rem;
+  color: blanchedalmond;
+}
+
+.news-content p {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.news-link {
+  text-decoration: none;
+}
+
+/* Game List */
+.games {
+  display: grid;
+  align-items: start; /* Align items at the start */
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(300px, 1fr)
+  ); /* Responsive grid */
+  gap: 40px;
+  margin: 30px 60px 60px;
+  max-width: 100%;
+  align-items: stretch; /* Ensure all grid items stretch to the same height */
+  height: max-content;
+}
+
+.gamelist {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  justify-content: space-between;
+  height: auto;
+}
+
+.gamelist button {
+  background: linear-gradient(90deg, #04aa6d, #037b5d);
+  border-radius: 25px;
+  color: white;
+  padding: 8px 20px;
+  text-align: center;
+  border: none; /* Remove default border */
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.gamelist img {
+  width: 100%; /* Full width */
+  height: auto;
+  aspect-ratio: 350 / 420; /* Maintain the aspect ratio */
+  border-radius: 10px 10px 0 0; /* Rounded corners for the top */
+}
+
+.gamelist h4 {
+  color: #ffd700;
+  margin: 0;
+}
+
+.gamelist h5 {
+  color: rgb(255, 255, 255);
+}
+
+.gamelist button {
+  background: linear-gradient(
+    90deg,
+    #04aa6d,
+    #037b5d
+  ); /* Gradient background */
+  border-radius: 25px;
+  color: white;
+  padding: 8px 20px; /* Adjust padding for button */
+  text-align: center;
+  border: none; /* Remove default border */
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+.gamelist button:hover {
+  transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.gamelist a {
+  color: #ffffff; /* Light color for links */
+  font-size: 16px;
+  text-decoration: none; /* Remove underline */
+}
+
+.gamelist a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+@media (max-width: 768px) {
+  .games {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    margin: 20px 30px;
+  }
+}
+
+/* Game Details Page*/
+.game-detail {
+  box-sizing: content-box;
+  width: 50%;
+  background-color: #2a2a2a;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Soft shadow for depth */
+}
+
+.game-detail img {
+  width: 50%;
+  aspect-ratio: 400 / 520; /* Maintain the aspect ratio */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px; /* Rounded corners */
+  margin-bottom: 15px; /* Space below the image */
+}
+
+.game-detail h1 {
+  font-size: 2.5em; /* Large title */
+  margin: 0.5em 0; /* Space around title */
+  color: #ffffff; /* White for title */
+}
+
+.game-detail h2 {
+  font-size: 1.8em; /* Larger price */
+  color: #4caf50; /* Green for price */
+  margin: 0.5em 0; /* Space around price */
+}
+
+.game-detail h5 {
+  font-size: 1em; /* Consistent size for info */
+  color: #b0b0b0; /* Muted color for less emphasis */
+}
+
+.details {
+  flex: 1; /* Equal flex for columns */
+  min-width: 300px; /* Minimum width */
+  padding: 10px; /* Padding for columns */
+  text-align: center; /* Center text in columns */
+}
+
+.info-container {
+  text-align: center;
+}
+
+.info {
+  background-color: #333; /* Dark background for the info section */
+  color: #eaeaea; /* Light text color for contrast */
+  padding: 15px; /* Padding for spacing */
+  border-radius: 8px; /* Slightly rounded corners */
+  margin: 0 auto; /* Center the info section */
+  line-height: 1.6; /* Increased line height for better readability */
+  max-width: 600px; /* Limit width for better layout */
+  font-size: 17px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.toggle-more {
+  color: #04aa6d;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.toggle-more:hover {
+  text-decoration: underline; /* Underline effect on hover */
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.cart-button {
+  background-color: #04aa6d;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  width: 8em;
+}
+
+.return-button {
+  background-color: #f44336; /* Red color for return button */
+  border: none; /* No border */
+  border-radius: 5px; /* Slight rounding */
+  color: white; /* Text color */
+  padding: 10px 20px; /* Padding for the button */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Pointer cursor */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+  margin-left: 10px; /* Space between buttons if needed */
+}
+
+.return-button:hover,
+.cart-button:hover {
+  transform: translateY(-3px);
+}
+
+/* Cart Page*/
+.cart-container {
+  width: 650px;
+  height: fit-content;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart h2 {
+  text-align: center; /* Center align the heading */
+  margin-bottom: 20px; /* Space below the heading */
+}
+
+.cart ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.cart li {
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space between item name/price and controls */
+  align-items: center; /* Center items vertically */
+  padding: 10px; /* Padding for each item */
+  border-bottom: 1px solid #ccc; /* Separator line between items */
+}
+
+.cart li:last-child {
+  border-bottom: none; /* Remove border from the last item */
+}
+
+.quantity-controls {
+  display: flex; /* Use flexbox for quantity controls */
+  align-items: center; /* Center items vertically */
+  gap: 10px; /* Space between buttons */
+}
+
+.quantity-controls button {
+  background-color: #00aa6c;
+  color: white;
+  border: none;
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer;
+  padding: 5px 10px; /* Padding for buttons */
+}
+
+.quantity-controls button:disabled {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+.quantity-controls span {
+  font-weight: bold;
+}
+
+button.remove {
+  background-color: #ff4d4d;
+  color: white;
+  margin-left: 10px;
+  border: none;
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer;
+  padding: 5px 10px; /* Padding for buttons */
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.cart h3 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* Checkout button include checkout pages */
+.checkout-btn,
+.continue-shopping {
+  width: 100%;
+  padding: 10px;
+  background-color: #00aa6c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 5px; /* Space above buttons */
+}
+
+.cart .continue-shopping {
+  background-color: #007bff;
+}
+
+.checkout-btn:hover {
+  background-color: #006943;
+}
+.cart .continue-shopping:hover {
+  background-color: #0055b1;
+}
+
+.cart p {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login-prompt {
+  color: #ff0000; /* Red text for visibility */
+  font-size: 1em; /* Slightly larger font size */
+  margin-top: 5px; /* Space above the paragraph */
+  font-weight: bold; /* Bold text */
+  text-align: center; /* Center the text */
+}
+
+/* Checkout Page */
+.checkout {
+  background-color: #f9f9f9; /* Light background for contrast */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  display: flex;
+  flex-direction: column;
+  width: 60em;
+  height: fit-content;
+  margin-bottom: 30px;
+}
+
+.checkout h2 {
+  margin-bottom: 20px; /* Space below the heading */
+  text-align: center; /* Center the heading */
+}
+
+.order-summary {
+  margin: 2vh 1.5vw;
+  margin-bottom: 20px; /* Space below the order summary */
+}
+
+.order-summary ul {
+  padding-left: 0;
+}
+
+.order-summary li {
+  display: flex;
+  justify-content: space-between; /* Space between item name and remove button */
+  align-items: center; /* Center items vertically */
+  padding: 10px; /* Padding for each item */
+  border-bottom: 1px solid #ddd; /* Divider for items */
+}
+
+.order-summary li:last-child {
+  border-bottom: none; /* Remove border from last item */
+}
+
+.customer-info label {
+  display: block; /* Ensure labels are block elements */
+  margin-bottom: 5px; /* Space below each label */
+}
+
+.customer-info {
+  margin: 2vh 1.5vw;
+}
+
+.customer-info input,
+.customer-info select {
+  min-width: 95%;
+  padding: 8px;
+  border: 1px solid #ccc; /* Border for inputs */
+  border-radius: 5px; /* Rounded corners */
+  margin-bottom: 15px; /* Space below each input */
+}
+
+/* Receipt page */
+.receipt {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 600px;
+  height: fit-content;
+}
+
+.receipt h2 {
+  text-align: center;
+}
+
+.receipt ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.receipt li {
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.receipt li:last-child {
+  border-bottom: none;
+}
+
+/*  QRcode Page */
+.qr-code-container {
+  padding: 20px; /* Inner padding for the container */
+  background-color: #f9f9f9; /* Light background for contrast */
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  height: fit-content;
+  text-align: center; /* Center align text */
+}
+
+.qr-code-container h1 {
+  font-size: 24px; /* Font size for the heading */
+  margin-bottom: 10px; /* Space below the heading */
+}
+
+.qr-code-container h4 {
+  font-size: 16px; /* Font size for the instructions */
+  margin-bottom: 20px; /* Space below the instructions */
+}
+
+.qr-code {
+  display: inline-block; /* Center QR code */
+  margin: 5px auto; /* Center QR code horizontally */
+}
+
+/* Contact Page */
+
+.contact {
+  width: 500px; /* Max width of the login form */
+  height: fit-content;
+  padding: 20px; /* Inner padding for the container */
+  background-color: #f9f9f9; /* Light background color */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.contact h2 {
+  text-align: center; /* Center align the heading */
+}
+
+.contact div {
+  margin-bottom: 15px; /* Space between form elements */
+}
+
+.contact label {
+  display: block; /* Make labels block elements */
+  margin-bottom: 5px; /* Space below labels */
+}
+
+.contact input,
+.contact textarea {
+  width: 100%; /* Full width for inputs and text areas */
+  padding: 10px; /* Padding inside inputs and text areas */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 4px; /* Rounded corners for inputs */
+  box-sizing: border-box; /* Include padding and border in element's total width */
+}
+
+.contact textarea {
+  min-height: 150px; /* Minimum height for the message box */
+  resize: vertical; /* Allow vertical resizing of the textarea */
+}
+
+.contact button {
+  width: 100%; /* Full width for the button */
+  padding: 10px; /* Padding inside the button */
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white; /* White text color */
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners for the button */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.contact button:disabled {
+  background-color: #ccc; /* Gray background for disabled button */
+}
+
+.contact p {
+  color: green;
+  font-size: large;
+}
+
+/* Login page */
+
+.login-container {
+  width: 500px;
+  height: fit-content;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+  text-align: center; /* Center align the heading */
+  margin-bottom: 20px; /* Space below the heading */
+}
+
+.login-container div {
+  margin-bottom: 15px; /* Space between form elements */
+}
+
+.login-container label {
+  display: block; /* Make labels block elements */
+  margin-bottom: 5px; /* Space below labels */
+}
+
+.login-container input {
+  width: 100%; /* Full width for input fields */
+  padding: 10px; /* Padding inside input fields */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 4px; /* Rounded corners for input fields */
+  box-sizing: border-box; /* Include padding and border in element's total width */
+}
+
+.login-container button {
+  width: 100%; /* Full width for buttons */
+  padding: 10px; /* Padding inside buttons */
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white; /* White text color */
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners for buttons */
+  cursor: pointer; /* Pointer cursor on hover */
+  margin-top: 10px; /* Space above the button */
+}
+
+.login-container button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.login-container p {
+  text-align: center; /* Center align messages */
+  margin: 10px 0; /* Space above and below messages */
+}
+
+.login-container p.error {
+  color: red; /* Red color for error messages */
+}
+
+.login-container p.success {
+  color: green; /* Green color for success messages */
+}
+
+/* Create Account page */
+
+.register-container {
+  width: 500px;
+  height: fit-content;
+  padding: 20px; /* Inner padding for the container */
+  background-color: #f9f9f9; /* Light background color */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.register-container h2 {
+  text-align: center; /* Center align the heading */
+  margin-bottom: 20px; /* Space below the heading */
+}
+
+.register-container div {
+  margin-bottom: 15px; /* Space between form elements */
+}
+
+.register-container label {
+  display: block; /* Make labels block elements */
+  margin-bottom: 5px; /* Space below labels */
+}
+
+.register-container input {
+  width: 100%; /* Full width for input fields */
+  padding: 10px; /* Padding inside input fields */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 4px; /* Rounded corners for input fields */
+  box-sizing: border-box; /* Include padding and border in element's total width */
+}
+
+.register-container button {
+  width: 100%; /* Full width for buttons */
+  padding: 10px; /* Padding inside buttons */
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white; /* White text color */
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners for buttons */
+  cursor: pointer; /* Pointer cursor on hover */
+  margin-top: 10px; /* Space above the button */
+}
+
+.register-container button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.register-container p {
+  text-align: center; /* Center align messages */
+  margin: 10px 0; /* Space above and below messages */
+}
+
+.register-container p.error {
+  color: red; /* Red color for error messages */
+}
+
+.register-container p.success {
+  color: green; /* Green color for success messages */
+}
+
+/* Welcome message */
+
+.welcome-message {
+  width: 500px;
+  height: fit-content;
+  padding: 20px;
+  border: 1px solid #4caf50; /* Green border */
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #e8f5e9; /* Light green background */
+  text-align: center;
+  color: #333;
+}
+
+.welcome-message h2 {
+  margin-bottom: 15px;
+  color: #000000; /* Darker green for the heading */
+}
+
+.welcome-message a,
+.logout {
+  display: inline-block; /* Make both behave like buttons */
+  margin-top: 10px; /* Space above the elements */
+  padding: 10px 15px; /* Consistent padding for both */
+  border-radius: 5px; /* Rounded corners */
+  color: white; /* Text color */
+  text-decoration: none; /* Remove underline for the link */
+  font-size: 16px; /* Consistent font size */
+  transition: background-color 0.3s; /* Smooth transition on hover */
+}
+
+/* Link Styles */
+.welcome-message a {
+  background-color: #4caf50;
+  margin: 0;
+}
+
+.welcome-message a:hover {
+  background-color: #45a049;
+}
+
+/* Logout Button Styles */
+.logout {
+  margin-left: 10em;
+  margin-right: 10em;
+  background-color: #f44336; /* Red background for logout */
+  border: none; /* No border */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.logout:hover {
+  background-color: #d32f2f; /* Darker shade on hover */
+}
+
+.thank {
+  display: flex;
+  justify-content: center;
+}
