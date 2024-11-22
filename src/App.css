@@ -148,9 +148,8 @@ main {
 }
 
 .dropdown-menu-side {
-  text-align: center;
-  min-width: 100%;
-  font-size: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 768px) {
@@ -289,7 +288,7 @@ main {
   font-size: larger;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .latest-news {
     display: flex;
     justify-content: center;
@@ -316,10 +315,10 @@ main {
   width: 25em;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 700px) {
   .news-item {
-    max-width: 20em;
-    max-height: 25em;
+    max-width: 60vw;
+    max-height: fit-content;
   }
 }
 
@@ -333,6 +332,12 @@ main {
   height: 13em;
 }
 
+@media (max-width: 500px) {
+  .news-item img {
+    height: 8em;
+  }
+}
+
 .news-content {
   padding: 1em;
   color: #fff;
@@ -342,6 +347,14 @@ main {
   min-height: 2.5em;
   font-size: 1.2rem;
   color: #fff;
+}
+
+@media (max-width: 450px) {
+  .news-content h3 {
+    min-height: 1.5em;
+    font-size: 1rem;
+    color: #fff;
+  }
 }
 
 .news-content h6 {
@@ -366,7 +379,7 @@ main {
     auto-fill,
     minmax(300px, 1fr)
   ); /* Responsive grid */
-  gap: 40px;
+  gap: 30px;
   margin: 30px 60px 60px;
   max-width: 100%;
   align-items: stretch; /* Ensure all grid items stretch to the same height */
@@ -447,33 +460,53 @@ main {
 
 /* Game Details Page*/
 .game-detail {
-  box-sizing: content-box;
-  width: 50%;
+  box-sizing: border-box;
   background-color: #2a2a2a;
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 30px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Soft shadow for depth */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  width: 50vw;
+}
+
+@media (max-width: 768px) {
+  .game-detail {
+    padding: 15px; /* Reduce padding */
+    margin-bottom: 20px; /* Adjust bottom margin */
+    width: 95%; /* Increase width to fill more space */
+  }
+
+  .game-detail h2 {
+    font-size: 1.5em; /* Smaller heading size */
+  }
+
+  .game-detail p {
+    font-size: 0.9em; /* Smaller paragraph size */
+  }
 }
 
 .game-detail img {
-  width: 50%;
+  width: 30em;
   aspect-ratio: 400 / 520; /* Maintain the aspect ratio */
   height: auto; /* Maintain aspect ratio */
   border-radius: 10px; /* Rounded corners */
   margin-bottom: 15px; /* Space below the image */
 }
 
+@media (max-width: 600px) {
+  .game-detail img {
+    width: 50vw;
+  }
+}
+
 .game-detail h1 {
   font-size: 2.5em; /* Large title */
-  margin: 0.5em 0; /* Space around title */
   color: #ffffff; /* White for title */
 }
 
 .game-detail h2 {
   font-size: 1.8em; /* Larger price */
   color: #4caf50; /* Green for price */
-  margin: 0.5em 0; /* Space around price */
 }
 
 .game-detail h5 {
@@ -482,8 +515,6 @@ main {
 }
 
 .details {
-  flex: 1; /* Equal flex for columns */
-  min-width: 300px; /* Minimum width */
   padding: 10px; /* Padding for columns */
   text-align: center; /* Center text in columns */
 }
@@ -526,11 +557,9 @@ main {
   border-radius: 5px;
   color: white;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 15px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  width: 8em;
 }
 
 .return-button {
@@ -539,7 +568,7 @@ main {
   border-radius: 5px; /* Slight rounding */
   color: white; /* Text color */
   padding: 10px 20px; /* Padding for the button */
-  font-size: 16px; /* Font size */
+  font-size: 15px; /* Font size */
   cursor: pointer; /* Pointer cursor */
   transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
   margin-left: 10px; /* Space between buttons if needed */
