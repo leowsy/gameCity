@@ -149,6 +149,8 @@ main {
 
 .dropdown-menu-side {
   text-align: center;
+  min-width: 100%;
+  font-size: auto;
 }
 
 @media (max-width: 768px) {
@@ -282,7 +284,7 @@ main {
 
 .latest-news {
   margin-top: 2em;
-  margin-left: 5em;
+  margin-left: 4em;
   color: rgb(255, 255, 255);
   font-size: larger;
 }
@@ -291,12 +293,11 @@ main {
   .latest-news {
     display: flex;
     justify-content: center;
-    margin-left: auto;
+    margin: 1em auto 0;
   }
 }
 
 .news-container {
-  margin-top: 1em;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -304,15 +305,6 @@ main {
 }
 
 .news-item {
-  /* height: 40vh;
-  width: 20vw;
-  background-color: #1c1c1c;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  object-fit: contain;
-  transition: transform 0.2s, box-shadow 0.2s;
-  min-width: 300px;
-  min-height: 450px; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -321,7 +313,14 @@ main {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s, box-shadow 0.2;
   margin-bottom: 20px;
-  width: 23em;
+  width: 25em;
+}
+
+@media (max-width: 768px) {
+  .news-item {
+    max-width: 20em;
+    max-height: 25em;
+  }
 }
 
 .news-item:hover {
