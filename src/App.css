@@ -107,9 +107,8 @@ main {
   border-radius: 4px; /* Rounded corners */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
   z-index: 1000; /* Ensure it appears above other elements */
-  top: 47px; /* Space between Games link and dropdown */
+  top: 100%;
   left: 0;
-  max-width: 120px;
   opacity: 0;
   visibility: hidden; /* Hide by default */
   transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth appearance */
@@ -209,7 +208,7 @@ main {
   position: relative;
   text-align: center;
   height: 65vh;
-  width: 100%;
+  min-width: 100vw;
   transition: all 0.3s ease;
 }
 
@@ -225,9 +224,9 @@ main {
 
 /* Screen resizing */
 
-@media (max-width: 800px) {
+@media (max-width: 1200px) {
   .slider-item {
-    height: 55vh; /* Decrease height */
+    height: 50vh; /* Decrease height */
     width: 70%; /* Decrease width */
   }
 }
@@ -241,7 +240,7 @@ main {
 
 @media (max-width: 400px) {
   .slider-item {
-    height: 25vh; /* Final decrease for small screens */
+    height: 20vh; /* Final decrease for small screens */
     width: 40%; /* Final decrease for small screens */
   }
 }
@@ -249,10 +248,6 @@ main {
 /* Arrow */
 
 .custom-arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
   position: absolute;
   z-index: 1; /* Ensure it’s above the images */
   opacity: 0.3;
@@ -260,11 +255,13 @@ main {
 }
 
 .next-arrow {
-  margin-right: 35px;
+  top: 45%;
+  right: 0.4rem;
 }
 
 .prev-arrow {
-  margin-left: 35px;
+  top: 42%;
+  left: 0.4rem;
 }
 
 .custom-arrow:hover {
@@ -282,25 +279,29 @@ main {
 /* Latest News */
 
 .latest-news {
-  margin-top: 2em;
-  margin-left: 4em;
+  margin-top: 2rem;
+  margin-left: 3vw;
   color: rgb(255, 255, 255);
   font-size: larger;
 }
 
-@media (max-width: 1000px) {
-  .latest-news {
-    display: flex;
-    justify-content: center;
-    margin: 1em auto 0;
-  }
+.news-container {
+  display: grid;
+  align-items: start; /* Align items at the start */
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(320px, 1fr)
+  ); /* Responsive grid */
+  gap: 3rem;
+  margin: 30px 60px 60px;
+  align-items: stretch; /* Ensure all grid items stretch to the same height */
 }
 
-.news-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 0 3vw;
+@media (max-width: 810px) {
+  .news-container {
+    margin: 30px 30px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
 }
 
 .news-item {
@@ -311,15 +312,6 @@ main {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s, box-shadow 0.2;
-  margin-bottom: 20px;
-  width: 25em;
-}
-
-@media (max-width: 700px) {
-  .news-item {
-    max-width: 60vw;
-    max-height: fit-content;
-  }
 }
 
 .news-item:hover {
@@ -328,14 +320,9 @@ main {
 }
 
 .news-item img {
-  width: 100%;
-  height: 13em;
-}
-
-@media (max-width: 500px) {
-  .news-item img {
-    height: 8em;
-  }
+  width: 100%; /* Full width */
+  height: auto;
+  aspect-ratio: 750 / 350; /* Maintain the aspect ratio */
 }
 
 .news-content {
